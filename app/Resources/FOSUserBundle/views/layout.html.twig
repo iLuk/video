@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <!-- Page Content -->
+<div class="container">
+
+    <!-- News Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+                {% if app.request.attributes.get('_route') == "fos_user_registration_register" %}
+                Rejestracja
+                {% elseif app.request.attributes.get('_route') == "fos_user_security_login" %}
+                    Logowanie
+                {% elseif app.request.attributes.get('_route') == "fos_user_profile_show" %}
+                    Twój profil
+                {% elseif app.request.attributes.get('_route') == "fos_user_change_password" %}
+                    Zmiana hasła
+                {% else %}
+                    {{ app.request.attributes.get('_route') }}
+                {% endif %}
+
+                </h2>
+        </div>
+        <div class="col-md-12">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+        {% if app.request.attributes.get('_route') == "fos_user_profile_show" %}
+        <div class="col-md-12"><a href="{{ path('fos_user_change_password') }}">Zmień hasło</a></div>
+        {% endif %}
+    </div>
+    <!-- /.row -->
+    <!-- /.row -->
+    <hr>
+
+{% endblock %}
