@@ -1,81 +1,16 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'form/fields.html.twig' %}
 {% block body %}
-
     <!-- Page Content -->
 <div class="container">
 
     <!-- News Section -->
     <div class="row">
-        <h2>Dodaj nowe wideo</h2>
+        <h2>Dodaj nowy film</h2>
         <hr>
 
         {{ form_start(form) }}
-        {{ form_errors(form) }}
-
-        <div>
-            {{ form_label(form.title) }}
-            {{ form_errors(form.title) }}
-            {{ form_widget(form.title) }}
-        </div>
-
-        <div>
-            {{ form_label(form.subtitle) }}
-            {{ form_errors(form.subtitle) }}
-            {{ form_widget(form.subtitle) }}
-        </div>
-
-        <div>
-            {{ form_label(form.description) }}
-            {{ form_errors(form.description) }}
-            {{ form_widget(form.description) }}
-        </div>
-
-        <div>
-            {{ form_label(form.imageFile) }}
-            {{ form_errors(form.imageFile) }}
-            {{ form_widget(form.imageFile) }}
-        </div>
-
-        <div>
-            {{ form_label(form.director) }}
-            {{ form_errors(form.director) }}
-            {{ form_widget(form.director) }}
-        </div>
-
-        <div>
-            {{ form_label(form.writer) }}
-            {{ form_errors(form.writer) }}
-            {{ form_widget(form.writer) }}
-        </div>
-
-        <div>
-            {{ form_label(form.producer) }}
-            {{ form_errors(form.producer) }}
-            {{ form_widget(form.producer) }}
-        </div>
-
-        <div>
-            {{ form_label(form.premiere) }}
-            {{ form_errors(form.premiere) }}
-            {{ form_widget(form.premiere) }}
-        </div>
-
-        <div>
-            {{ form_label(form.length) }}
-            {{ form_errors(form.length) }}
-            {{ form_widget(form.length) }}
-        </div>
-
-        <div>
-            {{ form_label(form.date) }}
-            {{ form_errors(form.date) }}
-            {{ form_widget(form.date) }}
-        </div>
-
-        <div>
-            {{ form_widget(form.save) }}
-        </div>
-
+        {{ form_widget(form) }}
         {{ form_end(form) }}
 
     </div>

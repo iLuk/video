@@ -107,10 +107,18 @@ class Film
      */
     private $genres;
 
-    // ...
+    /**
+     * @ORM\ManyToMany(targetEntity="Link")
+     * @ORM\JoinTable(name="film_link",
+     *      joinColumns={@ORM\JoinColumn(name="film_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")}
+     *      )
+     */
+    private $links;
 
     public function __construct() {
         $this->genres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->links = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -453,5 +461,39 @@ class Film
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * Add link
+     *
+     * @param \AppBundle\Entity\Link $link
+     *
+     * @return Film
+     */
+    public function addLink(\AppBundle\Entity\Link $link)
+    {
+        $this->links[] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Remove link
+     *
+     * @param \AppBundle\Entity\Link $link
+     */
+    public function removeLink(\AppBundle\Entity\Link $link)
+    {
+        $this->links->removeElement($link);
+    }
+
+    /**
+     * Get links
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLinks()
+    {
+        return $this->links;
     }
 }

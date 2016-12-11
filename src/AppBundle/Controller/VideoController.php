@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class VideoController extends Controller
 {
     /**
-     * @Route("/video/{id}")
+     * @Route("/video/{id}", name="show_video")
      */
 
     public function showAction($id){
@@ -44,7 +44,8 @@ class VideoController extends Controller
             'producer'=>$film->getProducer(),
             'premiere'=>$film->getPremiere(),
             'length'=>$film->getLength(),
-            'date'=>$film->getDate()->format("d.m.Y (H:i)")
+            'date'=>$film->getDate()->format("d.m.Y (H:i)"),
+            'genres' => $film->getGenres()
 
         ));
 

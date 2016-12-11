@@ -20,7 +20,7 @@ class AddVideoController extends Controller
 {
 
     /**
-     * @Route("/video/add")
+     * @Route("/video/add", name="add_video")
      */
 
     public function newAction(Request $request)

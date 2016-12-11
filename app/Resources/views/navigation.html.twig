@@ -9,32 +9,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ asset("/") }}app_dev.php/">Video online</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Video online</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="video/add">Add video</a>
+                    <a href="{{ path('add_video') }}">Add video</a>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Videos<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ asset("video/1") }}">Video 1 test</a>
+                            <a href="{{ path('show_video',{'id': 1} ) }}">Video 1</a>
                         </li>
                         <li>
-                            <a href="portfolio-2-col.html">Video 2</a>
+                            <a href="{{ path('show_video',{'id': 2} ) }}">Video 2</a>
                         </li>
                         <li>
-                            <a href="portfolio-3-col.html">Video 2</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-4-col.html">Video 2</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-item.html">Video 2</a>
+                            <a href="{{ path('show_video',{'id': 3} ) }}">Video 3</a>
                         </li>
                     </ul>
                 </li>

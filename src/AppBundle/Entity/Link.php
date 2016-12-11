@@ -1,15 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Luk
+ * Date: 09/12/2016
+ * Time: 18:51
+ */
 
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
- * Genre
+ * Link
  * @ORM\Entity
- * @ORM\Table(name="genre")
+ * @ORM\Table(name="link")
  */
-class Genre
+class Link
 {
     /**
      * @var int
@@ -27,11 +32,18 @@ class Genre
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=512)
+     */
+    private $url;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -43,7 +55,7 @@ class Genre
      *
      * @param string $name
      *
-     * @return Genre
+     * @return Link
      */
     public function setName($name)
     {
@@ -60,5 +72,29 @@ class Genre
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Link
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }
