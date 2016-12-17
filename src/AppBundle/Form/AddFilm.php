@@ -19,6 +19,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Entity\Film;
+use AppBundle\Form\Type\LinkType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class AddFilm extends AbstractType
 {
@@ -85,12 +87,19 @@ class AddFilm extends AbstractType
                 'attr' => [
                     'placeholder' => 'Wprowadź długość trwania w minutach'
                 ]))
+            ->add('links', CollectionType::class, array(
+                'entry_type' => LinkType::class,
+                'allow_add'    => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+            ))
             ->add('date', null, array(
                 'label' => 'Data dodania',
                 'data' => new \DateTime('now'),
                 'attr' => [
                     'data-help'  => 'Domyślnie ustawiony jest aktualny czas.'
             ]))
+
             ->add('save', SubmitType::class, array(
                 'label' => 'Dodaj nowy film',
                 'attr' => [

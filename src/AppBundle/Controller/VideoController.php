@@ -45,7 +45,8 @@ class VideoController extends Controller
             'premiere'=>$film->getPremiere(),
             'length'=>$film->getLength(),
             'date'=>$film->getDate()->format("d.m.Y (H:i)"),
-            'genres' => $film->getGenres()
+            'genres' => $film->getGenres(),
+            'links' => $film->getLinks()
 
         ));
 

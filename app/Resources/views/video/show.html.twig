@@ -44,33 +44,39 @@
                     <div class="col-lg-12">
 
                         <ul id="myTab" class="nav nav-tabs nav-justified">
-                            <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> VIDFile</a>
-                            </li>
-                            <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-car"></i> PlayerGoogle</a>
-                            </li>
-                            <li class=""><a href="#service-three" data-toggle="tab"><i class="fa fa-support"></i> PlayerTune</a>
-                            </li>
-                            <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-database"></i> PlayerVK</a>
-                            </li>
+
+                            {% for link in links %}
+                                {% if loop.first %}
+                                <li class="active"><a href="#{{ link.id }}" data-toggle="tab">{{ link.name }}</a></li>
+                                {% else %}
+                                <li class=""><a href="#{{ link.id }}" data-toggle="tab">{{ link.name }}</a></li>
+                                {% endif %}
+
+                            {% endfor %}
+
                         </ul>
+
+
+
+
                         <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane fade active in" id="service-one">
-                                <h4>VIDFile</h4>
-                                <iframe width="750" height="410" src="https://www.youtube.com/embed/2Z4m4lnjxkY" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="tab-pane fade" id="service-two">
-                                <h4>PlayerGoogle</h4>
-                                <iframe width="750" height="410" src="https://www.youtube.com/embed/2Z4m4lnjxkY" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="tab-pane fade" id="service-three">
-                                <h4>PlayerTune</h4>
-                                <iframe width="750" height="410" src="https://www.youtube.com/embed/2Z4m4lnjxkY" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="tab-pane fade" id="service-four">
-                                <h4>PlayerVK</h4>
-                                <iframe width="750" height="410" src="https://www.youtube.com/embed/2Z4m4lnjxkY" frameborder="0" allowfullscreen></iframe>
-                            </div>
+
+                            {% for link in links %}
+                                {% if loop.first %}
+                                    <div class="tab-pane fade active in" id="{{ link.id }}">
+                                        <iframe width="750" height="410" src="{{ link.url }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                {% else %}
+                                    <div class="tab-pane fade" id="{{ link.id }}">
+                                        <iframe width="750" height="410" src="{{ link.url }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+
                         </div>
+
+
 
                     </div>
                 </div>
@@ -80,58 +86,58 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                {#<div class="well">#}
+                    {#<h4>Leave a Comment:</h4>#}
+                    {#<form role="form">#}
+                        {#<div class="form-group">#}
+                            {#<textarea class="form-control" rows="3"></textarea>#}
+                        {#</div>#}
+                        {#<button type="submit" class="btn btn-primary">Submit</button>#}
+                    {#</form>#}
+                {#</div>#}
 
                 <hr>
 
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
+                {#<div class="media">#}
+                    {#<a class="pull-left" href="#">#}
+                        {#<img class="media-object" src="http://placehold.it/64x64" alt="">#}
+                    {#</a>#}
+                    {#<div class="media-body">#}
+                        {#<h4 class="media-heading">Start Bootstrap#}
+                            {#<small>August 25, 2014 at 9:30 PM</small>#}
+                        {#</h4>#}
+                        {#Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.#}
+                    {#</div>#}
+                {#</div>#}
 
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
+                {#<!-- Comment -->#}
+                {#<div class="media">#}
+                    {#<a class="pull-left" href="#">#}
+                        {#<img class="media-object" src="http://placehold.it/64x64" alt="">#}
+                    {#</a>#}
+                    {#<div class="media-body">#}
+                        {#<h4 class="media-heading">Start Bootstrap#}
+                            {#<small>August 25, 2014 at 9:30 PM</small>#}
+                        {#</h4>#}
+                        {#Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.#}
+                        {#<!-- Nested Comment -->#}
+                        {#<div class="media">#}
+                            {#<a class="pull-left" href="#">#}
+                                {#<img class="media-object" src="http://placehold.it/64x64" alt="">#}
+                            {#</a>#}
+                            {#<div class="media-body">#}
+                                {#<h4 class="media-heading">Nested Start Bootstrap#}
+                                    {#<small>August 25, 2014 at 9:30 PM</small>#}
+                                {#</h4>#}
+                                {#Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<!-- End Nested Comment -->#}
+                    {#</div>#}
+                {#</div>#}
 
 
             </div>

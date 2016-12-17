@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Form\AddFilm;
 use AppBundle\Entity\Film;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class AddVideoController extends Controller
 {
@@ -25,7 +26,7 @@ class AddVideoController extends Controller
 
     public function newAction(Request $request)
     {
-        // just setup a fresh $task object (remove the dummy data)
+        // just setup a fresh $film object (remove the dummy data)
         $film = new Film();
 
         $form = $this->createForm(AddFilm::class, $film);
@@ -34,12 +35,16 @@ class AddVideoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
+            // but, the original `$film` variable has also been updated
             $film = $form->getData();
 
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
+            // ... perform some action, such as saving the film to the database
+            // for example, if Film is a Doctrine entity, save it!
             $em = $this->getDoctrine()->getManager();
+
+            foreach ($film->getLinks() as $link)
+                $em->persist($link);
+
             $em->persist($film);
             $em->flush();
 

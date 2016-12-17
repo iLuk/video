@@ -9,14 +9,16 @@
         <h2>Dodaj nowy film</h2>
         <hr>
 
-
         {{ form_start(form) }}
-        <ul class="links list-unstyled" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}"></ul>
-        {{ form_widget(form) }}
+        {# render the task's only field: description #}
+        {{ form_row(form.description) }}
 
-        {{ form_end(form) }}
+        <h3>Links</h3>
 
-
+                {# iterate over each existing link and render its only field: name #}
+        <ul class="links" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}">
+        </ul>
+            {{ form_end(form) }}
 
     </div>
     <!-- /.row -->
@@ -28,15 +30,11 @@
         var $collectionHolder;
 
         // setup an "add a link" link
-        var $addLinkLink = $('<a href="#" class="add_link_link btn btn-default">Dodaj nowy link</a>');
-        var $newLinkLi = $addLinkLink;
+        var $addLinkLink = $('<a href="#" class="add_link_link">Add a link</a>');
+        var $newLinkLi = $('<li></li>').append($addLinkLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of links
-
-
-            $('ul.links').appendTo($('#add_film_links'));
-
             $collectionHolder = $('ul.links');
 
             // add a delete link to all of the existing link form li elements
@@ -75,14 +73,14 @@
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a link" link li
-            var $newFormLi = $('<li class="unstyled"></li>').append(newForm);
+            var $newFormLi = $('<li></li>').append(newForm);
             $newLinkLi.before($newFormLi);
 
             addLinkFormDeleteLink($newFormLi);
         }
 
         function addLinkFormDeleteLink($linkFormLi) {
-            var $removeFormA = $('<a href="#" class="btn btn-warning">Usuń powyższy link</a>');
+            var $removeFormA = $('<a href="#">delete this link</a>');
             $linkFormLi.append($removeFormA);
 
             $removeFormA.on('click', function(e) {
@@ -93,7 +91,8 @@
                 $linkFormLi.remove();
             });
         }
-
+        
     </script>
 
 {% endblock %}
+

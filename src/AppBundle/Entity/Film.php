@@ -472,9 +472,10 @@ class Film
      */
     public function addLink(\AppBundle\Entity\Link $link)
     {
-        $this->links[] = $link;
 
-        return $this;
+        $this->links->add($link);
+
+
     }
 
     /**
@@ -486,6 +487,13 @@ class Film
     {
         $this->links->removeElement($link);
     }
+
+    /**
+     * Get links
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+
 
     /**
      * Get links
