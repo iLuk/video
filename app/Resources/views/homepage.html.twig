@@ -4,17 +4,32 @@
 <!-- Page Content -->
 <div class="container">
 
+    <hr>
+    <div class="well">
+        <h4>Wyszukiwarka filmów</h4>
+
+        <form action="{{ path('search') }}" method="">
+            <div class="input-group">
+                <input type="text" name="name" class="form-control" placeholder="Wprowadź tytuł filmu">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit button"><i class="fa fa-search"></i></button>
+            </span>
+            </div>
+        </form>
+        <!-- /.input-group -->
+    </div>
+    <hr>
     <!-- News Section -->
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Nowości na strony</h2>
         </div>
         <div class="col-md-12">
+            <p>Najnowsze filmy online i seriale online, tysiące filmów w setkach kategorii całkowicie za darmo. Znajdziesz filmy z lektorem, filmy po polsku, filmy z dubbingiem  do ściągnięcia.</p>
+            <p>Większość współczesnych filmów jest udźwiękowiona – to znaczy posiada dźwięk ściśle zsynchronizowany z obrazem. Dawniej popularne były filmy nieme, na których wszystkie teksty pojawiały się w formie napisów.
 
-            <p>The Modern Business template by Start Bootstrap includes:</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+                W historii filmu istniało kilka momentów przełomowych. Pierwszym z ważniejszych było wprowadzenie dźwięku, później koloru, różnych formatów ekranów (np. ekran panoramiczny – cinemascope), filmów trójwymiarowych (zob. IMAX), dźwięku stereofonicznego (Dolby Stereo). Jednym z ostatnich przełomów było pojawienie się technologii cyfrowej zarówno przy efektach inscenizacyjnych jak i przy rejestracji obrazu (High Definition). Dotyczy to szczególnie filmu animowanego, gdzie coraz powszechniejsza jest animacja 3D imitująca przestrzeń trójwymiarową (zobacz np. Final Fantasy – realistyczną animację 3D, imitującą film aktorski).</p>
+           <p>Podstawowy nośnik, na którym jest utrwalany i z którego wyświetla się film to światłoczuła błona fotograficzna 35 mm. Na taśmie filmowej obraz jest zapisany w postaci pojedynczych kadrów, przesuwających się w projektorze kinowym z prędkością 24 klatek na sekundę (w epoce kina niemego było to 16 klatek na sekundę).</p>
         </div>
     </div>
     <!-- /.row -->
@@ -42,24 +57,23 @@
     </div>
     <!-- /.row -->
 
-    <!-- Najpopularniejsze filmy -->
+    <!-- Według gatunków -->
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Najpopularniejsze filmy</h2>
+            <h2 class="page-header">Gatunki filmowe</h2>
         </div>
         <!-- Projects Row -->
         <div class="row">
 
-            {% for i in 1..8 %}
+            {% for genre in genres %}
                 <div class="col-md-3 img-portfolio">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-hover" src="http://placehold.it/750x450" alt="">
-                    </a>
-                    <h4 style="text-align: center">
-                        <a href="portfolio-item.html">film_name_{{ i }}</a>
-                    </h4>
+
+                    <h3 style="text-align: center">
+                        <a href="{{ path('show_genre',{'name': genre.name}) }}">{{ genre.name }}</a>
+                    </h3>
                 </div>
             {% endfor %}
+
         </div>
         <!-- /.row -->
     </div>

@@ -9,14 +9,11 @@
         <h2>Dodaj nowy film</h2>
         <hr>
 
-
         {{ form_start(form) }}
         <ul class="links list-unstyled" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}"></ul>
         {{ form_widget(form) }}
 
         {{ form_end(form) }}
-
-
 
     </div>
     <!-- /.row -->

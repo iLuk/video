@@ -23,6 +23,7 @@ class MainController extends Controller
 
     public function showAction(){
 
+        $genres = $this->getDoctrine()->getRepository('AppBundle:Genre')->findAll();
 
 
         $em = $this->getDoctrine()->getManager();
@@ -36,7 +37,8 @@ class MainController extends Controller
 
         return $this->render('homepage.html.twig', array(
 
-            'film' => $film
+            'film' => $film,
+            'genres' => $genres
 
         ));
     }

@@ -1,0 +1,52 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %} xxx {% endblock %}
+
+{%  block body %}
+    <!-- Page Content -->
+    <div class="container">
+
+    <hr>
+    <!-- Blog Search Well -->
+    <div class="well">
+        <h4>Wyszukiwarka filmów</h4>
+
+            <form action="{{ path('search') }}" method="">
+                <div class="input-group">
+                    <input type="text" name="name" value="{{ what }}" class="form-control" placeholder="Wprowadź tytuł filmu">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit button"><i class="fa fa-search"></i></button>
+            </span>
+                </div>
+            </form>
+
+
+        <!-- /.input-group -->
+    </div>
+    <hr>
+
+    <!-- /.row -->
+
+    {% for film in films %}
+        <div class="row">
+            <div class="col-md-7">
+                <a href="{{ path('show_video',{'id': film.id}) }}">
+                    <img class="img-responsive img-hover" src="/video/web/images/videos/{{ film.image }}" style="width:750px;height:250px;" alt="xd">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>{{ film.title }}</h3>
+                <h4>{{ film.subtitle }}</h4>
+                <p>{{ film.description }}</p>
+                <a class="btn btn-primary" href="{{ path('show_video',{'id': film.id}) }}">Zobacz</a>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+
+    {# display navigation #}
+    <div class="navigation text-center">
+        {{ knp_pagination_render(films) }}
+    </div>
+    <!-- /.container -->
+{%  endblock %}
