@@ -23,7 +23,7 @@ class MainController extends Controller
 
     public function showAction(){
 
-        $genres = $this->getDoctrine()->getRepository('AppBundle:Genre')->findAll();
+       // $genres = $this->getDoctrine()->getRepository('AppBundle:Genre')->findAll();
 
 
         $em = $this->getDoctrine()->getManager();
@@ -33,7 +33,15 @@ class MainController extends Controller
          ORDER BY p.date DESC')
          ->setMaxResults(8);
 
+        $query2 = $em->createQuery(
+           'SELECT g
+           FROM AppBundle:Genre g
+           ORDER BY g.name ASC'
+        );
+
         $film = $query->getResult();
+
+        $genres = $query2->getResult();
 
         return $this->render('homepage.html.twig', array(
 
