@@ -1,0 +1,40 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %} Lista filmów {% endblock %}
+
+{%  block body %}
+    <!-- Page Content -->
+    <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Lista filmów
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    {% for film in films %}
+        <div class="row">
+            <div class="col-md-7">
+                <a href="{{ path('show_video',{'id': film.id}) }}">
+                    <img class="img-responsive img-hover" src="/video/web/images/videos/{{ film.image }}" style="width:750px;height:250px;" alt="xd">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>{{ film.title }}</h3>
+                <h4>{{ film.subtitle }}</h4>
+                <p>{{ film.description }}</p>
+                <a class="btn btn-primary" href="{{ path('show_video',{'id': film.id}) }}">Zobacz</a>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+
+    {# display navigation #}
+    <div class="navigation text-center">
+        {{ knp_pagination_render(films) }}
+    </div>
+    <!-- /.container -->
+{%  endblock %}

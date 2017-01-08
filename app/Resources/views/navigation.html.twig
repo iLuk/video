@@ -14,6 +14,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ path('show_films') }}">Lista filmów</a>
+                </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
                     <a href="{{ path('add_video') }}">Dodaj nowy film</a>

@@ -16,6 +16,12 @@
         </div>
         <!-- /.row -->
 
+        {% if films is empty%}
+
+            <h3>Brak filmów.</h3>
+
+        {% endif %}
+
         {% for film in films %}
             <div class="row">
                 <div class="col-md-7">
